@@ -1,0 +1,11 @@
+.p-3 {
+    width: 20px;
+    height: 30px;
+    border: 1px double rgb(7, 3, 247);
+}
+
+.table-bordered {
+    width: 100%;
+    height: 100%;
+    border: 4px double black;
+}
