@@ -1,15 +1,18 @@
-const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-const mixerValues = (numbers) => {
+const mixerValues = () => {
   const iter = (acc, numbers) => {
-    if (numbers.length === 0) {
-      return acc;
+    if (numbers.length === 1) {
+      return [...acc, numbers[0]];
     };
-    const randomNum = numbers[Math.floor(Math.random() * numbers.length)];
-    return mixerValues([...acc, randomNum], numbers.filter(n => n !== randomNum)); 
+    const randomPlace = Math.floor(Math.random() * numbers.length);
+    const randomNum = numbers[randomPlace];
+    console.log(numbers.length, randomPlace, randomNum);
+    return iter([...acc, randomNum], numbers.filter(n => n !== randomNum)); 
   };
-  return iter([], numbers);
+  const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  return iter([], values);
 };
-const mixedValues = mixerValues(values);
+const mixedValues = mixerValues();
+console.log(mixedValues);
 
 const generatePlayingField = () => {
   const tableEl = document.createElement('table');
