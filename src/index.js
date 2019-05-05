@@ -5,14 +5,12 @@ const mixerValues = () => {
     };
     const randomPlace = Math.floor(Math.random() * numbers.length);
     const randomNum = numbers[randomPlace];
-    console.log(numbers.length, randomPlace, randomNum);
     return iter([...acc, randomNum], numbers.filter(n => n !== randomNum)); 
   };
   const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   return iter([], values);
 };
 const mixedValues = mixerValues();
-console.log(mixedValues);
 
 const generatePlayingField = () => {
   const tableEl = document.createElement('table');
