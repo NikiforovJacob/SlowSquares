@@ -1,4 +1,15 @@
-const values = [8, 3, 2, 9, 11, 15, 5, 1, 7, 6, 13, 4, 12, 10, 14];
+const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const mixerValues = (numbers) => {
+  const iter = (acc, numbers) => {
+    if (numbers.length === 0) {
+      return acc;
+    };
+    const randomNum = numbers[Math.floor(Math.random() * numbers.length)];
+    return mixerValues([...acc, randomNum], numbers.filter(n => n !== randomNum)); 
+  };
+  return iter([], numbers);
+};
+const mixedValues = mixerValues(values);
 
 const generatePlayingField = () => {
   const tableEl = document.createElement('table');
@@ -12,7 +23,7 @@ const generatePlayingField = () => {
       if (i === 3 && j === 3) {
         cell.classList.add('table-active');
       } else {
-        cell.textContent = values[i + (j * 4)];
+        cell.textContent = mixedValues[i + (j * 4)];
       }
     }
   }
